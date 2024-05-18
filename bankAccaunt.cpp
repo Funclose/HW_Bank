@@ -1,3 +1,4 @@
+#include <iostream>
 #include "exception.h"
 #include "bankAccaunt.h"
 #include "bank.h"
@@ -11,7 +12,7 @@
 	{
 		if (amount < 0)
 		{
-			throw ArgumentException("error u can't deposit however 0");
+			throw ArgumentException("error u can't deposit lower 0");
 		}
 		else
 		{
@@ -24,6 +25,7 @@
 	{
 			if (amount < 0)
 			{
+				/*std::cout << "error";*/
 				throw ArgumentException("u cant withdraw 0");
 			}
 			if (amount > balance && !useCredit)
@@ -33,8 +35,12 @@
 			if (amount > balance && useCredit)
 			{
 				double remainBalance = amount - balance;
+				if (remainBalance > creditLimit)
+				{
+					throw InsufficientFundsException("insufficient funds, use creditLimit");
+				}
 				balance = 0;
-				throw InsufficientFundsException("insufficient funds, use creditLimit");
+				creditLimit -= remainBalance;
 			}
 			else
 			{

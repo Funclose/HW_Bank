@@ -13,6 +13,6 @@ public:
 	void Deposit(double amount);
 	void Withdraw(double amount);
 	double GetBalance() const;
-
+	BankAccaunt& GetAccount();
 };
 

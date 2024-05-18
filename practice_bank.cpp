@@ -17,24 +17,37 @@ int main() {
 
     // Выводим текущий баланс
     std::cout << "Current balance: " << user.GetBalance() << std::endl;
+    user.Deposit(15000);
 
-    // Попытка снятия суммы, превышающей баланс
+
+
+    //все отлично работает только при этом коде если возникает внештатная ситуация
+    /*try {
+        user.Withdraw(15000);
+    }
+    catch (const std::exception& e) {
+        std::cerr << "Exception caught: " << e.what() << std::endl;
+    }*/
     
-     user.Withdraw(1500);
+    
+     user.Withdraw(20000);
+     cout << "after withdraw balance now: " << user.GetBalance() << endl;
     
     
 
-    // Попытка снятия отрицательной суммы
     
-        user.Withdraw(-100);
+    //ошибка
+        /*user.Withdraw(-100);*/
     
+     user.Deposit(-100);
     
 
     // Вносим средства на счет
+     
     user.Deposit(500);
-
+    cout << "balance after depositing: " << endl;
     // Снова выводим текущий баланс
-    std::cout << "Current balance: " << user.GetBalance() << std::endl;
+    cout << "Current balance: " << user.GetBalance() << std::endl;
 
     return 0;
 }

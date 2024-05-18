@@ -17,5 +17,10 @@ double User::GetBalance() const
 {
 	return accaunt.GetBalance();
 }
+
+BankAccaunt& User::GetAccount()
+{
+	return accaunt;
+}
 	
 
